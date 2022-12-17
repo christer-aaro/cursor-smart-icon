@@ -1,0 +1,79 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 4vw, 100px);
+  background-color: rgb(26, 33, 42);
+  height: 100vh;
+  margin: 0;
+}
+
+#trailer {
+  position: fixed;
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#trailer:not([data-type=""]) > #trailer-icon {
+  opacity: 1;
+}
+
+#trailer-icon {
+  font-size: 6px;
+  line-height: 4px;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+
+
+body:hover > #trailer {
+  opacity: 1;
+}
+
+.interactable {
+  position: relative;
+  height: clamp(500px, 20vh, 1000px);
+  width: clamp(300px, 20vh, 600px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 600ms ease;
+  overflow: hidden;
+  opacity: .5;
+}
+
+.interactable::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+  background-size: cover;
+  transform-origin: center;
+  transition: transform .6s ease-in-out;
+
+}
+
+.interactable:hover {
+  opacity: .8;
+}
+
+.interactable:hover::after {
+  transform: scale(1.05);
+}
+
